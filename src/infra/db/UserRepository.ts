@@ -1,36 +1,45 @@
 import { User } from "../../domain/models/User";
-import { getRepository } from "typeorm";
+import { EntityRepository, Repository } from "typeorm";
 
-export class UserRepository {
+@EntityRepository(User)
+export class UserRepository extends Repository<User> {
 
-  static findByName(name: string) {
-    return getRepository(User)
-      .createQueryBuilder('user')
-      .where('user.name = :name', { name })
-      .getOne()
+  findByName(name: string) {
+    return this.findOne({ where: { name } });
   }
 
-  static lastUser() {
-    return getRepository(User)
-      .createQueryBuilder('user')
-      .orderBy('id', 'DESC')
-      .getOne();
+  lastUser() {
+    return this.findOne({ order: { id: 'ASC' } });
   }
 
-  static findAll() {
-    return getRepository(User)
-      .createQueryBuilder('user')
-      .orderBy('id', 'ASC')
-      .getMany();
+  findAll() {
+    return this.find();
   }
 
-  static create(user: User) {
-    return getRepository(User)
-      .createQueryBuilder('user')
-      .insert()
-      .into(User)
-      .values([ user ])
-      .execute();
+  insertUser(user: User) {
+    return this.insert(user);
   }
+  
+  // findByName(name: string) {
+  //   return getRepository(User)
+  //     .createQueryBuilder('user')
+  //     .where('user.name = :name', { name })
+  //     .getOne()
+  // }
 
+  // lastUser() {
+  //   return getRepository(User)
+  //     .createQueryBuilder('user')
+  //     .orderBy('id', 'DESC')
+  //     .getOne();
+  // }
+
+  // create(user: User) {
+  //   return getRepository(User)
+  //     .createQueryBuilder('user')
+  //     .insert()
+  //     .into(User)
+  //     .values([ user ])
+  //     .execute();
+  // }
 }

@@ -12,6 +12,7 @@ export class UserFindAllController {
 
       return ok(users);
     } catch (error) {
+      console.log(error);
       switch (error.message) {
         default:
           return serverError();
