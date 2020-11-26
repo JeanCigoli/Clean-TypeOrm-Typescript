@@ -1,5 +1,5 @@
-import { UserCreateInterface } from "../../../domain/usecases/user/create";
 import { UserFindAllInterface } from "../../../domain/usecases/user/findAll";
+import { ok, serverError } from "../../../main/utils/response";
 import { HttpResponse } from "../../protocols";
 
 export class UserFindAllController {
@@ -10,22 +10,11 @@ export class UserFindAllController {
 
       const users = await this.user.index();
 
-      return {
-        statusCode: 200,
-        body: {
-          message: "Select success",
-          payload: users,
-        },
-      };
+      return ok(users);
     } catch (error) {
       switch (error.message) {
         default:
-          return {
-            statusCode: 500,
-            body: {
-              message: "Internal server",
-            },
-          };
+          return serverError();
       }
     }
   }
