@@ -4,7 +4,7 @@
 
 A api foi feita com clean architecture baseado no curso do [rmanguinho](https://github.com/rmanguinho/clean-ts-api), foi utilizado TypeOrm e sqlite para teste.
 
----
+
 
 ## Linguagens e Ferramentas Utilizadas
 
@@ -18,7 +18,7 @@ No Backend foi utilizado:
 * Celebrate para validação;
 * Linguagem Typescript para desenvolver.
 
----
+
 
 ## Como usar
 
