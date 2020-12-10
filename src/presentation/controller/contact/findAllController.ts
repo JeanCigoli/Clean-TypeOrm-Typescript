@@ -1,16 +1,16 @@
-import { UserFindAllInterface } from "../../../domain/usecases/user/findAll";
+import { ContactFindAllInterface } from "../../../domain/usecases/contact/findAll";
 import { ok, serverError } from "../../../main/utils/response";
 import { HttpResponse } from "../../protocols";
 
-export class UserFindAllController {
-  constructor(private readonly user: UserFindAllInterface) {}
+export class ContactFindAllController {
+  constructor(private readonly contact: ContactFindAllInterface) {}
 
   async handle(): Promise<HttpResponse> {
     try {
 
-      const users = await this.user.index();
+      const contacts = await this.contact.index();
 
-      return ok(users);
+      return ok(contacts);
     } catch (error) {
       switch (error.message) {
         default:

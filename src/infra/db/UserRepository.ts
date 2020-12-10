@@ -8,8 +8,12 @@ export class UserRepository extends Repository<User> {
     return this.findOne({ where: { name } });
   }
 
+  findByNameAndPassword(name: string, password: string) {
+    return this.findOne({ where: { name, password } });
+  }
+
   lastUser() {
-    return this.findOne({ order: { id: 'ASC' } });
+    return this.findOne({ order: { id: 'DESC' } });
   }
 
   findAll() {
@@ -19,27 +23,4 @@ export class UserRepository extends Repository<User> {
   insertUser(user: User) {
     return this.insert(user);
   }
-  
-  // findByName(name: string) {
-  //   return getRepository(User)
-  //     .createQueryBuilder('user')
-  //     .where('user.name = :name', { name })
-  //     .getOne()
-  // }
-
-  // lastUser() {
-  //   return getRepository(User)
-  //     .createQueryBuilder('user')
-  //     .orderBy('id', 'DESC')
-  //     .getOne();
-  // }
-
-  // create(user: User) {
-  //   return getRepository(User)
-  //     .createQueryBuilder('user')
-  //     .insert()
-  //     .into(User)
-  //     .values([ user ])
-  //     .execute();
-  // }
 }

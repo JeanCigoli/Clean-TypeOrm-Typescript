@@ -8,6 +8,6 @@ module.exports = {
   entities: [path.join(__dirname, "src", "domain", "models", "*.ts")],
   migrations: [path.join(__dirname, "database", "migrations", "*.ts")],
   cli: {
-    migrationsDir: path.join(__dirname, "database", "migrations"),
+    migrationsDir: '/database/migrations',
   },
 };

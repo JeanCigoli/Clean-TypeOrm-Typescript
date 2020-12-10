@@ -39,3 +39,14 @@ export const conflict = (field: string, error?: any[]) => {
     },
   };
 };
+
+export const notFound = (field: string, error?: any[]) => {
+  return {
+    statusCode: 404,
+    body: {
+      message: `${field} not found`,
+      payload: {},
+      error,
+    },
+  };
+};

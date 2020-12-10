@@ -1,7 +1,6 @@
 import 'reflect-metadata';
 import express from 'express';
 import cors from 'cors';
-import { errors } from 'celebrate';
 import { connection } from './config/typeorm';
 import setupRoutes from './config/routes'
 
@@ -12,8 +11,6 @@ app.use(express.json());
 
 connection();
 setupRoutes(app);
-
-app.use(errors());
 
 export {
   app,
